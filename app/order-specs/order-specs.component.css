@@ -1,0 +1,41 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.form-container {
+    margin: 15px 0 15px 0;
+    padding: 15px 0 15px 0;
+    border-radius: 5px;
+}
+
+.form-container textarea{
+    width:100%;
+}
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.disabled-textarea {
+    opacity: 0.3;
+}
+
+.order-spec-option {
+    margin: 5px 0 5px 0;
+}

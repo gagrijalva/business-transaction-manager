@@ -1,0 +1,49 @@
+<br><br>
+<button type="button" class="btn btn-info" (click)="newOrder()">Nueva orden +</button>
+
+
+<div *ngIf="addingOrder">
+  <form *ngIf="active" #paramsForm="ngForm">
+    <div class="container">
+      <div class="row">
+        <template ngFor let-orderSpecGroup let-i="index" [ngForOf]="orderSpecs | groupElementsToArray">
+          <div class="container-fluid form-row">
+            <div *ngFor="let orderSpec of orderSpecGroup" class="col-md-4 form-input">
+            <label for="spec">{{orderSpec.spec}}</label>
+            <div [ngSwitch]="orderSpec.inputType">
+              <template [ngSwitchCase]="0">
+                <input type="text" class="form-control"
+                    required [(ngModel)]="model[orderSpec.spec]"
+                    placeholder="Nombre del parámetro" [ngModelOptions]="{standalone: true}">
+              </template>
+              <template [ngSwitchCase]="1">
+                <select class="form-control" [(ngModel)]="model[orderSpec.spec]" 
+                        required name="inputType" #inputType="ngModel"
+                        [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let option of orderSpec.options | convertToArray; let i = index" [value]="option">{{option}}</option>
+                </select>
+              </template>
+              <template [ngSwitchCase]="2">
+                <template ngFor let-option [ngForOf]="orderSpec.options |  convertToArray">
+                  <input type="radio" [(ngModel)]="model[orderSpec.spec]" [name]="orderSpec.spec" [value]="option"> {{option}} <br/>
+                </template>
+              </template>
+              <template [ngSwitchCase]="3">
+                <textarea [(ngModel)]="model[orderSpec.spec]" required [name]="orderSpec.spec" #options="ngModel"></textarea>
+              </template>
+              <template ngSwitchDefault>
+                Default
+              </template>
+            </div>
+          </div>   
+          </div>
+        </template>
+      </div>
+    </div>
+    <button class="btn btn-primary col-md-2" (click)="onSubmit()" [disabled]="!paramsForm.form.valid">Submit</button>
+  </form>
+</div>
+
+<div style="clear:both"></div>
+
+<h3>Mis pedidos</h3>

@@ -1,0 +1,66 @@
+<br><br>
+<button type="button" class="btn btn-info" (click)="newParameter()">Nuevo parámetro +</button>
+
+
+<div [hidden]="!addingParameter">
+  <form *ngIf="active" #paramsForm="ngForm">
+    <div class="form-container">
+        <div class="form-group col-md-4">
+          <label for="spec">Parámetro</label>
+          <input type="text" class="form-control" required
+            [(ngModel)]="model.spec"
+              name="spec"  #spec="ngModel" placeholder="Nombre del parámetro">
+          <div [hidden]="spec.valid || spec.pristine" class="alert alert-danger">
+            Name is required
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4">
+          <label for="inputType">Tipo</label>
+          <select class="form-control" [(ngModel)]="model.inputType" 
+                  required name="inputType" #inputType="ngModel"
+                  (change)="onChange($event.target.value)">
+              <option *ngFor="let input of inputTypes; let i = index" [value]="i">{{input}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-4" *ngIf="optionsRequired">
+          <label for="options">Opciones</label><br>
+          <textarea [(ngModel)]="model.options" required name="options" #options="ngModel"></textarea>
+        </div>
+        
+        <div style="clear:both"></div>
+        <button type="button" class="btn btn-primary col-md-2" (click)="onSubmit()" [disabled]="!paramsForm.form.valid">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div style="clear:both"></div>
+
+<h3>Mis opciones</h3>
+<table>
+  <th class="col-md-1">Id</th>
+  <th class="col-md-4">Parámetro</th>
+  <th class="col-md-2">Tipo</th>
+  <th class="col-md-3">Opciones</th>
+  <th class="col-md-1"></th>
+  <th class="col-md-1"></th>
+</table>
+<div *ngFor="let item of orderSpecs">
+  <div class="container-fluid order-spec-option">
+    <template [ngIf]="item.id !== editOrderSpec?.id">
+      <div class="col-md-1">{{item.id}}</div>
+      <div class="col-md-4">{{item.spec}}</div>
+      <div class="col-md-2">{{inputTypes[item.inputType]}}</div>
+      <div class="col-md-3">{{item.options}}</div>
+      <div class="col-md-1"><button (click)="onEdit(item)" type="button" class="btn btn-warning" >Editar</button></div>
+      <div class="col-md-1"><button (click)="deleteOrderSpec(item, $event)" type="button" class="btn btn-danger" >Eliminar</button></div>
+    </template>
+    <template [ngIf]="item.id === editOrderSpec?.id">
+      <btm-order-spec-form (finishedUpdate)="closeForm($event)" [orderSpec]="item"></btm-order-spec-form>
+    </template>
+  </div>
+</div>
+<div *ngIf="editOrderSpec">
+  {{editOrderSpec.id}}
+</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"orders-data.service.js","sourceRoot":"","sources":["orders-data.service.ts"],"names":[],"mappings":";AAAA;IAAA;IAOA,CAAC;IANC,oCAAQ,GAAR;QACE,IAAI,MAAM,GAAG;YACX,EAAC,EAAE,EAAE,EAAE,EAAE,IAAI,EAAE,UAAU,EAAC;SAC3B,CAAC;QACF,MAAM,CAAC,EAAC,QAAA,MAAM,EAAC,CAAC;IAClB,CAAC;IACH,wBAAC;AAAD,CAAC,AAPD,IAOC;AAPY,yBAAiB,oBAO7B,CAAA"}

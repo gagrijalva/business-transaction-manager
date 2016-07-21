@@ -1,0 +1,1 @@
+{"version":3,"file":"orders-memory-data.service.js","sourceRoot":"","sources":["orders-memory-data.service.ts"],"names":[],"mappings":";AAAA;IAAA;IAOA,CAAC;IANC,0CAAQ,GAAR;QACE,IAAI,MAAM,GAAG;YACX,EAAC,EAAE,EAAE,EAAE,EAAE,IAAI,EAAE,UAAU,EAAC;SAC3B,CAAC;QACF,MAAM,CAAC,EAAC,QAAA,MAAM,EAAC,CAAC;IAClB,CAAC;IACH,8BAAC;AAAD,CAAC,AAPD,IAOC;AAPY,+BAAuB,0BAOnC,CAAA"}
